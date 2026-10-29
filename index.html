@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum Pokémon</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <h1>ÁLBUM POKÉMON</h1>
+    </header>
+
+    <div class="filter-container">
+        <input
+            type="text"
+            id="filter"
+            class="filter"
+            placeholder="Pesquisar Pokémon..."
+            autocomplete="off">
+    </div>
+
+    <!-- Resultado da pesquisa: começa vazio -->
+    <div id="pokemon-pesquisado"></div>
+
+    <!-- Pokémon principais -->
+    <main class="container">
+        <section class="grade-pokemon">
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur">
+                </div>
+                <div class="informacoes">
+                    <h2>Bulbasaur</h2>
+                    <p>#1</p>
+                    <ul><li>Poison</li><li>Grass</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" alt="Ivysaur">
+                </div>
+                <div class="informacoes">
+                    <h2>Ivysaur</h2>
+                    <p>#2</p>
+                    <ul><li>Poison</li><li>Grass</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" alt="Venusaur">
+                </div>
+                <div class="informacoes">
+                    <h2>Venusaur</h2>
+                    <p>#3</p>
+                    <ul><li>Poison</li><li>Grass</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="Charmander">
+                </div>
+                <div class="informacoes">
+                    <h2>Charmander</h2>
+                    <p>#4</p>
+                    <ul><li>Fire</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png" alt="Charmeleon">
+                </div>
+                <div class="informacoes">
+                    <h2>Charmeleon</h2>
+                    <p>#5</p>
+                    <ul><li>Fire</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="Charizard">
+                </div>
+                <div class="informacoes">
+                    <h2>Charizard</h2>
+                    <p>#6</p>
+                    <ul><li>Fire</li><li>Flying</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="Squirtle">
+                </div>
+                <div class="informacoes">
+                    <h2>Squirtle</h2>
+                    <p>#7</p>
+                    <ul><li>Water</li></ul>
+                </div>
+            </article>
+
+            <article class="cartao-pokemon">
+                <div class="imagem-pokemon">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png" alt="Wartortle">
+                </div>
+                <div class="informacoes">
+                    <h2>Wartortle</h2>
+                    <p>#8</p>
+                    <ul><li>Water</li></ul>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html> 
