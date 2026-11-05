@@ -1,0 +1,56 @@
+29/10 – Naihara – ChatGPT
+
+Prompt: "Como posso gerar os cartões dos Pokémon automaticamente sem precisar escrever cada um no HTML?"
+
+Resposta: utilizando um vetor de objetos e uma função renderizar(lista) para criar os cartões dinamicamente.
+
+Aceitei: a utilização do vetor de objetos e da função de renderização.
+
+Rejeitei: substituir toda a estrutura visual que já estava pronta.
+
+
+29/10 – Naihara – ChatGPT
+
+Prompt: Como posso organizar os dados dos Pokémon em um vetor de objetos?
+
+Resposta: criando objetos com propriedades como nome, número, tipos e imagem, armazenados dentro de um array.
+
+Aceitei: organizar os dados dos Pokémon em objetos no JavaScript.
+
+Rejeitei: mudar os nomes e a organização das variáveis que eu já utilizava.
+
+
+29/10 – Leonardo – ChatGPT
+
+Prompt: "Como posso adicionar três tipos diferentes de eventos ao meu projeto?"
+
+Resposta: utilizando addEventListener() com os eventos input, submit e click.
+
+Aceitei: adicionar os eventos para melhorar a pesquisa e permitir limpar o campo.
+
+Rejeitei: remover a pesquisa que já funcionava.
+
+
+22/10 – André – ChatGPT
+
+Prompt: "Como posso fazer a pesquisa funcionar enquanto digito o nome do Pokémon?"
+
+Resposta: utilizando o evento input para identificar o que está sendo digitado e chamar a função de pesquisa.
+
+Aceitei: manter a pesquisa automática com um pequeno intervalo antes de buscar.
+
+Rejeitei: alterar o funcionamento original da pesquisa sem necessidade.
+
+
+29/10 – Naihara – ChatGPT
+
+Prompt: "Como posso adicionar um botão de informações no canto superior direito da página?"
+
+Resposta: A IA explicou como criar um botão que, ao ser clicado, abre um painel com informações sobre o projeto, utilizando HTML, CSS e JavaScript.
+
+Aceitei: Adicionar o botão no canto superior direito e mostrar as informações somente quando ele for clicado.
+
+Rejeitei: Deixar as informações aparecendo na tela o tempo todo, sem precisar clicar no botão.
+
+
+
