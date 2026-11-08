@@ -50,6 +50,16 @@ Resposta: A IA explicou como criar um botão que, ao ser clicado, abre um painel
 
 Aceitei: Adicionar o botão no canto superior direito e mostrar as informações somente quando ele for clicado.
 
+08/11 – Ana – ChatGPT
+
+Prompt: "Como posso adicionar um botão para mudar o idioma da página entre português e inglês?"
+
+Resposta: A IA explicou como criar dois botões, um para português e outro para inglês, utilizando HTML, CSS e JavaScript, permitindo alterar os textos da página ao clicar no idioma desejado.
+
+Aceitei: Adicionar os botões de Português e Inglês no canto superior direito e permitir que o usuário escolha o idioma da página.
+
+Rejeitei: Deixar a página em apenas um idioma, sem opção de tradução.
+
 Rejeitei: Deixar as informações aparecendo na tela o tempo todo, sem precisar clicar no botão.
 
 
