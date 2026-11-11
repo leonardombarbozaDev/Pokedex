@@ -16,11 +16,13 @@ h1 {
     color: #ffcb05;
     text-shadow: 3px 3px 0 #2a3990, 4px 4px 5px black;
     margin: 30px 0;
+    width: 100%;
 }
 
 .cabecalho {
     position: relative;
-    padding: 1px 170px 1px 20px;
+    padding: 1px 0;
+    width: 100%;
 }
 
 .seletor-idioma {
