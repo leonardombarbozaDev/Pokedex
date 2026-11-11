@@ -63,4 +63,12 @@ Rejeitei: Deixar a página em apenas um idioma, sem opção de tradução.
 Rejeitei: Deixar as informações aparecendo na tela o tempo todo, sem precisar clicar no botão.
 
 
+29/10 – Mariana – ChatGPT
 
+Prompt: "Como posso colocar duas imagens nos cantos superiores da página, mantendo o título centralizado e sem que as imagens acompanhem a rolagem da tela?"
+
+Resposta: utilizando position: absolute no CSS para posicionar as imagens nos cantos da página, ajustando top, left e right para definir suas posições.
+
+Aceitei: manter apenas uma imagens no canto esquerdo, sem acompanhar a rolagem da página.
+
+Rejeitei: utilizar position: fixed, pois as imagens ficariam acompanhando a tela durante a rolagem.
