@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,15 +11,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
           rel="stylesheet">
 </head>
-<div class="imagens-cantos">
-    <img src="https://www.imagensanimadas.com/data/media/1446/pokemon-imagem-animada-0083.gif"
-         class="imagem-esquerda" alt="BolaPokemon">
-</div>
+
 <body>
+    <div class="imagens-cantos">
+        <img
+            src="https://www.imagensanimadas.com/data/media/1446/pokemon-imagem-animada-0083.gif"
+            class="imagem-esquerda"
+            alt="BolaPokemon">
+    </div>
+
     <header class="cabecalho">
         <h1 data-i18n="title">ÁLBUM POKÉMON</h1>
+
         <div class="seletor-idioma">
-            <label for="idioma" data-i18n="languageLabel">Idioma:</label>
+            <label for="idioma" data-i18n="languageLabel">
+                Idioma:
+            </label>
+
             <select id="idioma" aria-label="Selecionar idioma">
                 <option value="pt">🇧🇷 Português</option>
                 <option value="en">🇺🇸 English</option>
@@ -26,53 +36,227 @@
         </div>
     </header>
 
-   <form class="filter-container" id="form-pesquisa">
+    <form class="filter-container" id="form-pesquisa">
         <input
             type="text"
             id="filter"
             class="filter"
-            placeholder="Pesquisar Pokémon..." data-i18n-placeholder="placeholder"
+            placeholder="Pesquisar Pokémon..."
+            data-i18n-placeholder="placeholder"
             autocomplete="off"
-            aria-label="Pesquisar Pokémon" data-i18n-aria="searchLabel">
+            aria-label="Pesquisar Pokémon"
+            data-i18n-aria="searchLabel">
+
         <div class="acoes-pesquisa">
-            <button type="submit" class="botao-pesquisa" data-i18n="search">Pesquisar</button>
-            <button type="button" id="limpar-pesquisa" class="botao-pesquisa" data-i18n="clear">Limpar</button>
+            <button
+                type="submit"
+                class="botao-pesquisa"
+                data-i18n="search">
+                Pesquisar
+            </button>
+
+            <button
+                type="button"
+                id="limpar-pesquisa"
+                class="botao-pesquisa"
+                data-i18n="clear">
+                Limpar
+            </button>
         </div>
-        <button type="button" id="btn-informacoes" class="btn-informacoes">
-             ⓘ
-</button>
-
-<div id="painel-informacoes" class="painel-informacoes">
-    <button id="fechar-informacoes" class="fechar-info">
-        ×
-    </button>
-
-    <h2 data-i18n="aboutTitle">Sobre o Projeto</h2>
-
-    <p><strong data-i18n="projectLabel">Projeto:</strong> <span data-i18n="projectName">Álbum Pokémon</span></p>
-    <p><strong data-i18n="courseLabel">Curso:</strong> <span data-i18n="courseName">Ciência da Computação</span></p>
-    <p><strong data-i18n="collegeLabel">Faculdade:</strong> FIB</p>
-    <p><strong data-i18n="technologiesLabel">Tecnologias:</strong> HTML, CSS e JavaScript</p>
-    <p><strong data-i18n="objectiveLabel">Objetivo:</strong> <span data-i18n="objectiveText">Apresentar e pesquisar Pokémon</span></p>
-    <p><strong data-i18n="namesLabel">Nomes:</strong><br>
-  Ana Julia Schucheman<br>
-  André L. Monteço<br>
-  Leonardo Barboza<br>
-  Mariana Mendes<br>
-  Naihara Neves
-    </p>
-</div>
     </form>
 
-    <div id="ultima-pesquisa" class="ultima-pesquisa" aria-live="polite"></div>
-    <div id="pokemon-pesquisado" aria-live="polite"></div>
+    <button
+        type="button"
+        id="btn-informacoes"
+        class="btn-informacoes">
+        ⓘ
+    </button>
+
+    <div id="painel-informacoes" class="painel-informacoes">
+        <button
+            type="button"
+            id="fechar-informacoes"
+            class="fechar-info">
+            ×
+        </button>
+
+        <h2 data-i18n="aboutTitle">Sobre o Projeto</h2>
+
+        <p>
+            <strong data-i18n="projectLabel">Projeto:</strong>
+            <span data-i18n="projectName">Álbum Pokémon</span>
+        </p>
+
+        <p>
+            <strong data-i18n="courseLabel">Curso:</strong>
+            <span data-i18n="courseName">Ciência da Computação</span>
+        </p>
+
+        <p>
+            <strong data-i18n="collegeLabel">Faculdade:</strong>
+            FIB
+        </p>
+
+        <p>
+            <strong data-i18n="technologiesLabel">Tecnologias:</strong>
+            HTML, CSS e JavaScript
+        </p>
+
+        <p>
+            <strong data-i18n="objectiveLabel">Objetivo:</strong>
+            <span data-i18n="objectiveText">
+                Apresentar e pesquisar Pokémon
+            </span>
+        </p>
+
+        <p>
+            <strong data-i18n="namesLabel">Nomes:</strong>
+            <br>
+            Ana Julia Schucheman<br>
+            André L. Monteço<br>
+            Leonardo Barboza<br>
+            Mariana Mendes<br>
+            Naihara Neves
+        </p>
+    </div>
+
+    <div
+        id="ultima-pesquisa"
+        class="ultima-pesquisa"
+        aria-live="polite">
+    </div>
+
+    <div
+        id="pokemon-pesquisado"
+        aria-live="polite">
+    </div>
+
+    <div class="atalho-gerenciar">
+        <button
+            type="button"
+            id="abrir-modal-pokemon"
+            class="botao-pesquisa">
+            + Adicionar Pokémon
+        </button>
+    </div>
+
+    <p id="estatisticas-album" class="estatisticas-album" aria-live="polite"></p>
+
+    <div
+        id="modal-pokemon"
+        class="modal-pokemon"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-modal-pokemon">
+
+        <div class="gerenciador-pokemon">
+            <button
+                type="button"
+                id="fechar-modal-pokemon"
+                class="fechar-modal-pokemon"
+                aria-label="Fechar">
+                ×
+            </button>
+
+            <h2 id="titulo-modal-pokemon">
+                Adicionar Pokémon
+            </h2>
+
+            <form id="form-pokemon">
+                <div class="campos-pokemon">
+
+                    <div class="campo-pokemon">
+                        <label for="nome-pokemon">
+                            Nome
+                        </label>
+                        <input
+                            type="text"
+                            id="nome-pokemon"
+                            placeholder="Ex.: Pikachu"
+                            required>
+                    </div>
+
+                    <div class="campo-pokemon">
+                        <label for="numero-pokemon">
+                            Número da Pokédex
+                        </label>
+                        <input
+                            type="number"
+                            id="numero-pokemon"
+                            placeholder="Ex.: 25"
+                            min="1"
+                            required>
+                    </div>
+
+                    <div class="campo-pokemon">
+                        <label for="tipo-pokemon">
+                            Tipo
+                        </label>
+                        <select id="tipo-pokemon" required>
+                            <option value="" selected disabled>Selecione um tipo</option>
+                            <option value="normal">Normal</option>
+                            <option value="fire">Fogo</option>
+                            <option value="water">Água</option>
+                            <option value="electric">Elétrico</option>
+                            <option value="grass">Grama</option>
+                            <option value="ice">Gelo</option>
+                            <option value="fighting">Lutador</option>
+                            <option value="poison">Veneno</option>
+                            <option value="ground">Terra</option>
+                            <option value="flying">Voador</option>
+                            <option value="psychic">Psíquico</option>
+                            <option value="bug">Inseto</option>
+                            <option value="rock">Pedra</option>
+                            <option value="ghost">Fantasma</option>
+                            <option value="dragon">Dragão</option>
+                            <option value="dark">Sombrio</option>
+                            <option value="steel">Aço</option>
+                            <option value="fairy">Fada</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-pokemon">
+                        <label for="imagem-pokemon">
+                            URL da imagem (opcional)
+                        </label>
+                        <input
+                            type="url"
+                            id="imagem-pokemon"
+                            placeholder="https://... (opcional)">
+                    </div>
+
+                </div>
+
+                <div class="acoes-pokemon">
+                    <button
+                        type="submit"
+                        class="botao-pesquisa">
+                        Salvar Pokémon
+                    </button>
+                </div>
+
+                <p
+                    id="mensagem-form"
+                    class="mensagem-form"
+                    aria-live="polite">
+                </p>
+            </form>
+        </div>
+    </div>
 
     <main class="container">
-        <section class="grade-pokemon" id="grade-pokemon" aria-label="Álbum de Pokémon">
-            <p class="mensagem">Carregando Pokémon...</p>
+        <section
+            class="grade-pokemon"
+            id="grade-pokemon"
+            aria-label="Álbum de Pokémon">
+
+            <p class="mensagem">
+                Carregando Pokémon...
+            </p>
+
         </section>
     </main>
+
     <script src="app.js"></script>
 </body>
 </html>
-</html> 
