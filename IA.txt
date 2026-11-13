@@ -72,3 +72,33 @@ Resposta: utilizando position: absolute no CSS para posicionar as imagens nos ca
 Aceitei: manter apenas uma imagens no canto esquerdo, sem acompanhar a rolagem da página.
 
 Rejeitei: utilizar position: fixed, pois as imagens ficariam acompanhando a tela durante a rolagem.
+
+12/11 – MARIANA – ChatGPT
+
+Prompt: "Como posso gerar os cartões dos Pokémon automaticamente sem precisar escrever cada um no HTML?"
+
+Resposta: utilizando um vetor de objetos e uma função renderizar(lista) para criar os cartões automaticamente.
+
+Aceitei: utilizar o vetor de objetos e a função de renderização.
+
+Rejeitei: substituir toda a estrutura visual que já estava pronta.
+
+12/11 – ANDRÉ – ChatGPT
+
+Prompt: "Como posso deixar o seletor de idioma e o botão de informações no canto superior direito?"
+
+Resposta: organizando os elementos pelo CSS e ajustando suas posições.
+
+Aceitei: posicionar os dois elementos na parte superior direita.
+
+Rejeitei: alterar o título e a estrutura principal do site.
+
+12/11 – ANDRÉ – ChatGPT
+
+Prompt: "Como posso salvar as modificações do site para que continuem aparecendo quando ele for acessado novamente?"
+
+Resposta: utilizando localStorage para armazenar os Pokémon adicionados, editados e excluídos, mantendo os dados após atualizar ou reabrir a página no mesmo navegador.
+
+Aceitei: utilizar o localStorage para salvar as alterações realizadas.
+
+Rejeitei: utilizar um banco de dados externo, pois o armazenamento local atende à necessidade atual do projeto.
