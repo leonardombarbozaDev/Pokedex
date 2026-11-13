@@ -82,6 +82,31 @@ function criarCartao(pokemon) {
 
     informacoes.append(nome, numero, listaTipos);
     cartao.append(imagemContainer, informacoes);
+    if (pokemonsAdicionados.some(item => item.id === pokemon.id)) {
+        const acoes = document.createElement("div");
+        acoes.className = "acoes-cartao";
+        const editar = document.createElement("button");
+        editar.type = "button";
+        editar.className = "botao-pesquisa";
+        editar.textContent = "Editar";
+        editar.addEventListener("click", () => editarPokemon(pokemon.id));
+        const excluir = document.createElement("button");
+        excluir.type = "button";
+        excluir.className = "botao-pesquisa";
+        excluir.textContent = "Excluir";
+        excluir.addEventListener("click", () => excluirPokemon(pokemon.id));
+        acoes.append(editar, excluir);
+        cartao.appendChild(acoes);
+        if (pokemon.criadoEm) {
+            const data = new Date(pokemon.criadoEm);
+            if (!Number.isNaN(data.getTime())) {
+                const dataTexto = document.createElement("p");
+                dataTexto.className = "data-cadastro";
+                dataTexto.textContent = "Adicionado em: " + data.toLocaleDateString("pt-BR");
+                cartao.appendChild(dataTexto);
+            }
+        }
+    }
     return cartao;
 }
 
@@ -172,6 +197,7 @@ async function executarPesquisa(termo) {
             const dados = await resposta.json();
             const urls = dados.pokemon.map(item => item.pokemon.url);
             const detalhes = await Promise.all(urls.map(obterDetalhes));
+            detalhes.push(...pokemonsAdicionados.filter(p => p.tipos.includes(busca) && !detalhes.some(d => d.id === p.id)));
             if (idPesquisa !== pesquisaAtual) return;
             resultado.innerHTML = `<h2 class="titulo-resultados">${t("typeTitle")} ${traduzirTipo(busca)} (${detalhes.length})</h2>`;
             const gradeResultados = document.createElement("div");
@@ -199,6 +225,16 @@ async function executarPesquisa(termo) {
         }
 
         if (!correspondentes.length) {
+            const locais = pokemonsAdicionados.filter(p => p.nome.toLowerCase().startsWith(busca));
+            if (locais.length) {
+                resultado.innerHTML = "";
+                const gradeLocal = document.createElement("div");
+                gradeLocal.className = "grade-pokemon";
+                resultado.appendChild(gradeLocal);
+                renderizar(locais, gradeLocal);
+                centralizarResultados();
+                return;
+            }
             mostrarMensagem(t("noPokemon"));
             return;
         }
@@ -207,6 +243,8 @@ async function executarPesquisa(termo) {
         const limite = 80;
         const selecionados = correspondentes.slice(0, limite);
         const detalhes = await Promise.all(selecionados.map(item => obterDetalhes(item.url)));
+        const locais = pokemonsAdicionados.filter(p => p.nome.toLowerCase().startsWith(busca));
+        detalhes.push(...locais.filter(p => !detalhes.some(d => d.id === p.id)));
         if (idPesquisa !== pesquisaAtual) return;
 
         resultado.innerHTML = `<h2 class="titulo-resultados">${titulo}</h2>`;
@@ -236,10 +274,15 @@ function centralizarResultados() {
     });
 }
 
+const pokemonsAdicionados = (() => {
+    try { const dados = JSON.parse(localStorage.getItem("pokemonsAdicionados") || "[]"); return Array.isArray(dados) ? dados : []; }
+    catch { return []; }
+})();
+
 function restaurarAlbum() {
     resultado.innerHTML = "";
     resultado.classList.remove("visivel");
-    renderizar(pokemonsIniciais);
+    renderizar([...pokemonsIniciais, ...pokemonsAdicionados]);
 }
 
 campoPesquisa.addEventListener("input", () => {
@@ -247,8 +290,7 @@ campoPesquisa.addEventListener("input", () => {
     const termo = campoPesquisa.value.trim();
     if (!termo) {
         pesquisaAtual++;
-        resultado.innerHTML = "";
-        resultado.classList.remove("visivel");
+        restaurarAlbum();
         return;
     }
     temporizador = setTimeout(() => executarPesquisa(termo), 450);
@@ -288,6 +330,143 @@ seletorIdioma.addEventListener("change", () => {
     localStorage.setItem("idiomaPokemon", idiomaAtual);
     aplicarIdioma();
 });
-renderizar(pokemonsIniciais);
+renderizar([...pokemonsIniciais, ...pokemonsAdicionados]);
 aplicarIdioma();
 atualizarUltimaPesquisa();
+
+const modalAdicionar = document.querySelector("#modal-pokemon");
+const abrirAdicionar = document.querySelector("#abrir-modal-pokemon");
+const fecharAdicionar = document.querySelector("#fechar-modal-pokemon");
+function fecharCadastro() { modalAdicionar.classList.remove("aberto"); document.body.classList.remove("modal-aberto"); }
+abrirAdicionar.addEventListener("click", () => { modalAdicionar.classList.add("aberto"); document.body.classList.add("modal-aberto"); document.querySelector("#nome-pokemon").focus(); });
+fecharAdicionar.addEventListener("click", fecharCadastro);
+modalAdicionar.addEventListener("click", e => { if (e.target === modalAdicionar) fecharCadastro(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") fecharCadastro(); });
+let pokemonEmEdicao = null;
+const formularioPokemon = document.querySelector("#form-pokemon");
+const mensagemCadastro = document.querySelector("#mensagem-form");
+const tituloCadastro = document.querySelector("#titulo-modal-pokemon");
+const botaoSalvarPokemon = formularioPokemon.querySelector('button[type="submit"]');
+const camposCadastro = ["nome-pokemon", "numero-pokemon", "tipo-pokemon", "imagem-pokemon"];
+
+// Mostra a mensagem imediatamente abaixo do campo correspondente, sem alert.
+camposCadastro.forEach(id => {
+    const campo = document.getElementById(id);
+    const aviso = document.createElement("small");
+    aviso.className = "erro-campo";
+    aviso.id = `erro-${id}`;
+    aviso.setAttribute("aria-live", "polite");
+    campo.insertAdjacentElement("afterend", aviso);
+    campo.addEventListener("input", () => limparErro(id));
+    campo.addEventListener("change", () => limparErro(id));
+});
+function limparErro(id) {
+    document.getElementById(`erro-${id}`).textContent = "";
+    document.getElementById(id).removeAttribute("aria-invalid");
+}
+function mostrarErro(id, texto) {
+    document.getElementById(`erro-${id}`).textContent = texto;
+    document.getElementById(id).setAttribute("aria-invalid", "true");
+}
+function limparErros() { camposCadastro.forEach(limparErro); mensagemCadastro.textContent = ""; }
+function salvarPokemons() {
+    try {
+        localStorage.setItem("pokemonsAdicionados", JSON.stringify(pokemonsAdicionados));
+        return true;
+    } catch (erro) {
+        console.warn("Não foi possível salvar localmente", erro);
+        mensagemCadastro.textContent = "Não foi possível salvar no navegador.";
+        return false;
+    }
+}
+function atualizarAlbum() {
+    campoPesquisa.value = "";
+    pesquisaAtual++;
+    restaurarAlbum();
+    atualizarEstatisticas();
+}
+function atualizarEstatisticas() {
+    const total = pokemonsIniciais.length + pokemonsAdicionados.length;
+    // Math é usado para calcular a porcentagem de Pokémon cadastrados.
+    const porcentagem = total ? Math.round((pokemonsAdicionados.length / total) * 100) : 0;
+    document.getElementById("estatisticas-album").textContent =
+        `Total: ${total} Pokémon | Adicionados: ${pokemonsAdicionados.length} (${porcentagem}%)`;
+}
+function editarPokemon(id) {
+    const pokemon = pokemonsAdicionados.find(p => p.id === id);
+    if (!pokemon) return;
+    pokemonEmEdicao = id;
+    limparErros();
+    document.getElementById("nome-pokemon").value = pokemon.nome;
+    document.getElementById("numero-pokemon").value = pokemon.id;
+    document.getElementById("tipo-pokemon").value = pokemon.tipos[0] || "";
+    document.getElementById("imagem-pokemon").value = pokemon.imagem || "";
+    tituloCadastro.textContent = "Editar Pokémon";
+    botaoSalvarPokemon.textContent = "Salvar alterações";
+    modalAdicionar.classList.add("aberto");
+    document.body.classList.add("modal-aberto");
+}
+function excluirPokemon(id) {
+    const indice = pokemonsAdicionados.findIndex(p => p.id === id);
+    if (indice < 0) return;
+    if (!confirm(`Deseja excluir ${pokemonsAdicionados[indice].nome} do álbum?`)) return;
+    const removido = pokemonsAdicionados.splice(indice, 1)[0];
+    if (!salvarPokemons()) { pokemonsAdicionados.splice(indice, 0, removido); return; }
+    atualizarAlbum();
+}
+function prepararNovoCadastro() {
+    pokemonEmEdicao = null;
+    formularioPokemon.reset();
+    limparErros();
+    tituloCadastro.textContent = "Adicionar Pokémon";
+    botaoSalvarPokemon.textContent = "Salvar Pokémon";
+}
+abrirAdicionar.addEventListener("click", prepararNovoCadastro);
+formularioPokemon.noValidate = true;
+formularioPokemon.addEventListener("submit", e => {
+    e.preventDefault();
+    limparErros();
+    const nome = document.querySelector("#nome-pokemon").value.trim();
+    const idTexto = document.querySelector("#numero-pokemon").value.trim();
+    const id = Number(idTexto);
+    const tipos = [document.querySelector("#tipo-pokemon").value].filter(Boolean);
+    const imagemInformada = document.querySelector("#imagem-pokemon").value.trim();
+    let valido = true;
+    if (!nome) { mostrarErro("nome-pokemon", "Informe o nome do Pokémon."); valido = false; }
+    if (!idTexto || !Number.isSafeInteger(id) || id < 1) {
+        mostrarErro("numero-pokemon", "Informe um número inteiro maior que zero."); valido = false;
+    } else if ([...pokemonsIniciais, ...pokemonsAdicionados].some(p => p.id === id && p.id !== pokemonEmEdicao)) {
+        mostrarErro("numero-pokemon", "Já existe um Pokémon com esse número."); valido = false;
+    }
+    if (!tipos.length) { mostrarErro("tipo-pokemon", "Selecione um tipo."); valido = false; }
+    if (imagemInformada) {
+        try {
+            const url = new URL(imagemInformada);
+            if (!["http:", "https:"].includes(url.protocol)) throw new Error("Protocolo inválido");
+        } catch {
+            mostrarErro("imagem-pokemon", "Informe uma URL válida ou deixe em branco.");
+            valido = false;
+        }
+    }
+    if (!valido) { mensagemCadastro.textContent = "Corrija os campos indicados."; return; }
+    const imagem = imagemInformada || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+    if (pokemonEmEdicao !== null) {
+        const indice = pokemonsAdicionados.findIndex(p => p.id === pokemonEmEdicao);
+        if (indice < 0) return;
+        const anterior = { ...pokemonsAdicionados[indice] };
+        pokemonsAdicionados[indice] = { ...anterior, id, nome, tipos, imagem };
+        if (!salvarPokemons()) { pokemonsAdicionados[indice] = anterior; return; }
+        mensagemCadastro.textContent = "Pokémon atualizado com sucesso!";
+    } else {
+        // Date registra quando o Pokémon foi adicionado.
+        pokemonsAdicionados.push({ id, nome, tipos, imagem, criadoEm: new Date().toISOString() });
+        if (!salvarPokemons()) { pokemonsAdicionados.pop(); return; }
+        mensagemCadastro.textContent = "Pokémon adicionado com sucesso!";
+    }
+    atualizarAlbum();
+    pokemonEmEdicao = null;
+    tituloCadastro.textContent = "Adicionar Pokémon";
+    botaoSalvarPokemon.textContent = "Salvar Pokémon";
+    formularioPokemon.reset();
+});
+atualizarEstatisticas();
