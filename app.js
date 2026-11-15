@@ -14,7 +14,9 @@ const traducoes = {
 
 let idiomaAtual = localStorage.getItem("idiomaPokemon") || "pt";
 if (!traducoes[idiomaAtual]) idiomaAtual = "pt";
-function t(chave) { return traducoes[idiomaAtual][chave] || chave; }
+function t(chave) {
+    return traducoes[idiomaAtual][chave] || chave;
+}
 function aplicarIdioma() {
     document.documentElement.lang = idiomaAtual === "pt" ? "pt-br" : idiomaAtual === "es" ? "es" : "en";
     document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
@@ -27,7 +29,9 @@ function aplicarIdioma() {
 
 const tiposTraduzidos = { normal:"normal", fuego:"fire", fogo:"fire", agua:"water", agua:"water", eléctrico:"electric", electrico:"electric", hierba:"grass", planta:"grass", hielo:"ice", lucha:"fighting", luchador:"fighting", veneno:"poison", tierra:"ground", volador:"flying", psíquico:"psychic", psiquico:"psychic", bicho:"bug", roca:"rock", fantasma:"ghost", dragón:"dragon", dragon:"dragon", siniestro:"dark", acero:"steel", hada:"fairy", fogo:"fire", fire:"fire", agua:"water", água:"water", water:"water", eletrico:"electric", elétrico:"electric", electric:"electric", grama:"grass", grass:"grass", gelo:"ice", ice:"ice", lutador:"fighting", fighting:"fighting", veneno:"poison", poison:"poison", terra:"ground", ground:"ground", voador:"flying", flying:"flying", psiquico:"psychic", psíquico:"psychic", psychic:"psychic", inseto:"bug", bug:"bug", pedra:"rock", rock:"rock", fantasma:"ghost", ghost:"ghost", dragao:"dragon", dragão:"dragon", dragon:"dragon", sombrio:"dark", dark:"dark", aço:"steel", steel:"steel", fada:"fairy", fairy:"fairy" };
 const nomesTipos = { normal:{pt:"Normal",en:"Normal",es:"Normal"}, fire:{pt:"Fogo",en:"Fire",es:"Fuego"}, water:{pt:"Água",en:"Water",es:"Agua"}, electric:{pt:"Elétrico",en:"Electric",es:"Eléctrico"}, grass:{pt:"Grama",en:"Grass",es:"Planta"}, ice:{pt:"Gelo",en:"Ice",es:"Hielo"}, fighting:{pt:"Lutador",en:"Fighting",es:"Lucha"}, poison:{pt:"Veneno",en:"Poison",es:"Veneno"}, ground:{pt:"Terra",en:"Ground",es:"Tierra"}, flying:{pt:"Voador",en:"Flying",es:"Volador"}, psychic:{pt:"Psíquico",en:"Psychic",es:"Psíquico"}, bug:{pt:"Inseto",en:"Bug",es:"Bicho"}, rock:{pt:"Pedra",en:"Rock",es:"Roca"}, ghost:{pt:"Fantasma",en:"Ghost",es:"Fantasma"}, dragon:{pt:"Dragão",en:"Dragon",es:"Dragón"}, dark:{pt:"Sombrio",en:"Dark",es:"Siniestro"}, steel:{pt:"Aço",en:"Steel",es:"Acero"}, fairy:{pt:"Fada",en:"Fairy",es:"Hada"} };
-function traduzirTipo(tipo) { return nomesTipos[tipo]?.[idiomaAtual] || nomeBonito(tipo); }
+function traduzirTipo(tipo) {
+    return nomesTipos[tipo]?.[idiomaAtual] || nomeBonito(tipo);
+}
 
 let temporizador;
 let pesquisaAtual = 0;
@@ -190,7 +194,6 @@ async function executarPesquisa(termo) {
     mostrarMensagem(t("searching"));
 
     try {
-        // Pesquisa por elemento/tipo
         if (tiposPokemon.includes(busca)) {
             const resposta = await fetch(`https://pokeapi.co/api/v2/type/${busca}`);
             if (!resposta.ok) throw new Error("Tipo não encontrado.");
@@ -238,8 +241,6 @@ async function executarPesquisa(termo) {
             mostrarMensagem(t("noPokemon"));
             return;
         }
-
-        // Evita sobrecarregar a página em pesquisas muito amplas.
         const limite = 80;
         const selecionados = correspondentes.slice(0, limite);
         const detalhes = await Promise.all(selecionados.map(item => obterDetalhes(item.url)));
@@ -268,15 +269,18 @@ async function executarPesquisa(termo) {
 }
 
 function centralizarResultados() {
-    // Leva os resultados para o centro da tela depois que os cartões forem exibidos.
     requestAnimationFrame(() => {
         resultado.scrollIntoView({ behavior: "smooth", block: "center" });
     });
 }
 
 const pokemonsAdicionados = (() => {
-    try { const dados = JSON.parse(localStorage.getItem("pokemonsAdicionados") || "[]"); return Array.isArray(dados) ? dados : []; }
-    catch { return []; }
+    try {
+        const dados = JSON.parse(localStorage.getItem("pokemonsAdicionados") || "[]");
+        return Array.isArray(dados) ? dados : [];
+    } catch {
+        return [];
+    }
 })();
 
 function restaurarAlbum() {
@@ -337,7 +341,10 @@ atualizarUltimaPesquisa();
 const modalAdicionar = document.querySelector("#modal-pokemon");
 const abrirAdicionar = document.querySelector("#abrir-modal-pokemon");
 const fecharAdicionar = document.querySelector("#fechar-modal-pokemon");
-function fecharCadastro() { modalAdicionar.classList.remove("aberto"); document.body.classList.remove("modal-aberto"); }
+function fecharCadastro() {
+    modalAdicionar.classList.remove("aberto");
+    document.body.classList.remove("modal-aberto");
+}
 abrirAdicionar.addEventListener("click", () => { modalAdicionar.classList.add("aberto"); document.body.classList.add("modal-aberto"); document.querySelector("#nome-pokemon").focus(); });
 fecharAdicionar.addEventListener("click", fecharCadastro);
 modalAdicionar.addEventListener("click", e => { if (e.target === modalAdicionar) fecharCadastro(); });
@@ -348,8 +355,6 @@ const mensagemCadastro = document.querySelector("#mensagem-form");
 const tituloCadastro = document.querySelector("#titulo-modal-pokemon");
 const botaoSalvarPokemon = formularioPokemon.querySelector('button[type="submit"]');
 const camposCadastro = ["nome-pokemon", "numero-pokemon", "tipo-pokemon", "imagem-pokemon"];
-
-// Mostra a mensagem imediatamente abaixo do campo correspondente, sem alert.
 camposCadastro.forEach(id => {
     const campo = document.getElementById(id);
     const aviso = document.createElement("small");
@@ -387,10 +392,8 @@ function atualizarAlbum() {
 }
 function atualizarEstatisticas() {
     const total = pokemonsIniciais.length + pokemonsAdicionados.length;
-    // Math é usado para calcular a porcentagem de Pokémon cadastrados.
-    const porcentagem = total ? Math.round((pokemonsAdicionados.length / total) * 100) : 0;
     document.getElementById("estatisticas-album").textContent =
-        `Total: ${total} Pokémon | Adicionados: ${pokemonsAdicionados.length} (${porcentagem}%)`;
+        `Total: ${total} Pokémon`;
 }
 function editarPokemon(id) {
     const pokemon = pokemonsAdicionados.find(p => p.id === id);
@@ -458,7 +461,6 @@ formularioPokemon.addEventListener("submit", e => {
         if (!salvarPokemons()) { pokemonsAdicionados[indice] = anterior; return; }
         mensagemCadastro.textContent = "Pokémon atualizado com sucesso!";
     } else {
-        // Date registra quando o Pokémon foi adicionado.
         pokemonsAdicionados.push({ id, nome, tipos, imagem, criadoEm: new Date().toISOString() });
         if (!salvarPokemons()) { pokemonsAdicionados.pop(); return; }
         mensagemCadastro.textContent = "Pokémon adicionado com sucesso!";
