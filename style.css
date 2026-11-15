@@ -398,3 +398,108 @@ body.modal-aberto { overflow:hidden; }
 .estatisticas-album { text-align:center; color:white; font-weight:800; margin:4px auto 15px; }
 .erro-campo { display:block; color:#b00020; font-size:12px; font-weight:700; min-height:0; }
 .campo-pokemon [aria-invalid="true"] { border-color:#b00020; }
+
+/* Layout adaptado para uso por toque em celulares */
+@media (max-width: 700px) {
+    html { -webkit-text-size-adjust: 100%; }
+    body { overflow-x: hidden; }
+    .cabecalho {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 14px 12px 18px;
+        min-height: 0;
+    }
+    .cabecalho h1 {
+        font-size: clamp(25px, 7vw, 34px);
+        line-height: 1.2;
+        margin: 10px 0 16px;
+        overflow-wrap: anywhere;
+    }
+    .seletor-idioma {
+        position: static;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0;
+        z-index: 2;
+    }
+    .seletor-idioma select { min-height: 44px; max-width: 190px; }
+    .btn-informacoes {
+        position: absolute;
+        top: 76px;
+        right: 10px;
+        width: 44px;
+        height: 44px;
+        z-index: 3;
+    }
+    .painel-informacoes {
+        position: fixed;
+        top: 70px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-height: calc(100dvh - 90px);
+        overflow-y: auto;
+        z-index: 1050;
+    }
+    .imagens-cantos {
+        position: relative;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+    }
+    .imagens-cantos img.imagem-esquerda {
+        position: static;
+        width: 76px;
+        height: 76px;
+    }
+    .filter-container {
+        width: calc(100% - 30px);
+        max-width: 520px;
+        margin: 8px auto 20px;
+    }
+    .filter, .campo-pokemon input, .campo-pokemon select {
+        font-size: 16px;
+        min-height: 48px;
+    }
+    .acoes-pesquisa {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .botao-pesquisa { min-height: 44px; touch-action: manipulation; }
+    .acoes-pesquisa .botao-pesquisa { width: 100%; }
+    .atalho-gerenciar { margin: 16px 15px 12px; }
+    .atalho-gerenciar .botao-pesquisa { width: 100%; max-width: 420px; }
+    .container { padding: 12px 15px 30px; }
+    .grade-pokemon,
+    #pokemon-pesquisado .grade-pokemon,
+    #pokemon-pesquisado .grade-pokemon.resultado-unico {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+    .cartao-pokemon { width: 100%; max-width: 420px; margin: 0 auto; }
+    .imagem-pokemon img { height: 170px; }
+    #pokemon-pesquisado { padding: 0 15px; }
+    .ultima-pesquisa { width: calc(100% - 30px); }
+    .ultima-pesquisa-botao { margin-top: 6px; }
+    .modal-pokemon { padding: 10px; align-items: center; }
+    .gerenciador-pokemon {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+        padding: 30px 16px 18px;
+    }
+    .campos-pokemon { grid-template-columns: minmax(0, 1fr); }
+    .acoes-pokemon .botao-pesquisa { width: 100%; }
+    .acoes-cartao .botao-pesquisa { min-width: 100px; }
+}
+@media (max-width: 380px) {
+    .cabecalho h1 { font-size: 25px; }
+    .btn-informacoes { top: 112px; }
+    .seletor-idioma { padding-right: 35px; }
+}
