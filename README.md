@@ -14,11 +14,11 @@ O site funciona diretamente no navegador, tanto no computador quanto no celular.
 
 ## Integrantes e responsabilidades
 
-- **Ana Julia Schucheman:**
-- **André L. Monteço:**
-- **Leonardo Barboza:**
-- **Mariana Mendes:**
-- **Naihara Neves:**
+- Ana Julia Schucheman: Estruturação da interface em HTML/CSS, estilização dos cartões e responsividade para dispositivos móveis.
+- André L. Monteço: Integração com a PokéAPI, carregamento dinâmico dos dados e tratamento de erros de conexão.
+- Leonardo Barboza: Organização do repositório no GitHub, deploy no GitHub Pages e funcionalidades de cadastro, edição e exclusão (`localStorage`).
+- Mariana Mendes: Implementação do sistema de busca e filtros por nome, tipo e iniciais.
+- Naihara Neves: Desenvolvimento do sistema de tradução (português, inglês e espanhol), modal informativo e testes gerais da aplicação.
 
 ## Tecnologias utilizadas
 
