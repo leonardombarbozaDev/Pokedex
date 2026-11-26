@@ -1,104 +1,117 @@
-29/10 – Naihara – ChatGPT
+## 29/10 – Naihara – ChatGPT
 
-Prompt: "Como posso gerar os cartões dos Pokémon automaticamente sem precisar escrever cada um no HTML?"
+**Prompt:** "Estou desenvolvendo um álbum de Pokémon utilizando HTML, CSS e JavaScript. Como posso gerar os cartões dinamicamente pelo JavaScript, evitando a repetição de código no HTML e mantendo o layout que já desenvolvi?"
 
-Resposta: utilizando um vetor de objetos e uma função renderizar(lista) para criar os cartões dinamicamente.
+**Resposta:** A IA sugeriu utilizar um vetor de objetos e uma função renderizar(lista), responsável por percorrer os dados e criar os cartões automaticamente.
 
-Aceitei: a utilização do vetor de objetos e da função de renderização.
+**Aceitei:** A utilização do vetor de objetos e da função de renderização para facilitar a criação dos cartões.
 
-Rejeitei: substituir toda a estrutura visual que já estava pronta.
+**Rejeitei:** Substituir toda a estrutura visual que já estava pronta.
 
+---
 
-29/10 – Naihara – ChatGPT
+## 29/10 – Naihara – ChatGPT
 
-Prompt: Como posso organizar os dados dos Pokémon em um vetor de objetos?
+**Prompt:** "Como posso estruturar os dados dos Pokémon em um vetor de objetos no JavaScript, armazenando nome, número, tipos e imagem, de maneira que essas informações possam ser utilizadas na pesquisa e na criação dos cartões?"
 
-Resposta: criando objetos com propriedades como nome, número, tipos e imagem, armazenados dentro de um array.
+**Resposta:** A IA sugeriu criar objetos com propriedades específicas para cada Pokémon e armazená-los dentro de um array.
 
-Aceitei: organizar os dados dos Pokémon em objetos no JavaScript.
+**Aceitei:** Organizar os dados dos Pokémon em objetos no JavaScript, facilitando o acesso às informações.
 
-Rejeitei: mudar os nomes e a organização das variáveis que eu já utilizava.
+**Rejeitei:** Alterar os nomes e a organização das variáveis que já utilizava no projeto.
 
+---
 
-29/10 – Leonardo – ChatGPT
+## 29/10 – Leonardo – ChatGPT
 
-Prompt: "Como posso adicionar três tipos diferentes de eventos ao meu projeto?"
+**Prompt:** "Meu projeto precisa utilizar pelo menos três tipos diferentes de eventos em JavaScript. Como posso implementar os eventos input, submit e click na barra de pesquisa e no botão de limpar, sem prejudicar as funcionalidades existentes?"
 
-Resposta: utilizando addEventListener() com os eventos input, submit e click.
+**Resposta:** A IA sugeriu utilizar addEventListener() para identificar a digitação, o envio do formulário e os cliques nos botões.
 
-Aceitei: adicionar os eventos para melhorar a pesquisa e permitir limpar o campo.
+**Aceitei:** Adicionar os eventos para melhorar a pesquisa e permitir limpar o campo.
 
-Rejeitei: remover a pesquisa que já funcionava.
+**Rejeitei:** Remover a pesquisa que já funcionava.
 
+---
 
-22/10 – André – ChatGPT
+## 22/10 – André – ChatGPT
 
-Prompt: "Como posso fazer a pesquisa funcionar enquanto digito o nome do Pokémon?"
+**Prompt:** "Como posso implementar uma pesquisa automática de Pokémon enquanto o usuário digita, evitando que sejam realizadas várias consultas desnecessárias à API a cada letra digitada?"
 
-Resposta: utilizando o evento input para identificar o que está sendo digitado e chamar a função de pesquisa.
+**Resposta:** A IA sugeriu utilizar o evento input juntamente com um pequeno intervalo de tempo (debounce) antes de executar a função de pesquisa.
 
-Aceitei: manter a pesquisa automática com um pequeno intervalo antes de buscar.
+**Aceitei:** Manter a pesquisa automática com um intervalo antes de realizar a consulta.
 
-Rejeitei: alterar o funcionamento original da pesquisa sem necessidade.
+**Rejeitei:** Alterar completamente o funcionamento original da pesquisa.
 
+---
 
-29/10 – Naihara – ChatGPT
+## 29/10 – Naihara – ChatGPT
 
-Prompt: "Como posso adicionar um botão de informações no canto superior direito da página?"
+**Prompt:** "Como posso criar um botão de informações no canto superior direito da Pokédex que, ao ser clicado, abra um painel com os dados do projeto, dos integrantes e das tecnologias utilizadas, sem ocupar espaço permanentemente na página?"
 
-Resposta: A IA explicou como criar um botão que, ao ser clicado, abre um painel com informações sobre o projeto, utilizando HTML, CSS e JavaScript.
+**Resposta:** A IA explicou como criar um botão e um painel de informações utilizando HTML, CSS e JavaScript, controlando sua abertura e seu fechamento.
 
-Aceitei: Adicionar o botão no canto superior direito e mostrar as informações somente quando ele for clicado.
+**Aceitei:** Adicionar o botão no canto superior direito e apresentar as informações somente quando solicitado pelo usuário.
 
-08/11 – Ana – ChatGPT
+**Rejeitei:** Deixar as informações aparecendo na tela o tempo todo.
 
-Prompt: "Como posso adicionar um botão para mudar o idioma da página entre português e inglês?"
+---
 
-Resposta: A IA explicou como criar dois botões, um para português e outro para inglês, utilizando HTML, CSS e JavaScript, permitindo alterar os textos da página ao clicar no idioma desejado.
+## 08/11 – Ana – ChatGPT
 
-Aceitei: Adicionar os botões de Português e Inglês no canto superior direito e permitir que o usuário escolha o idioma da página.
+**Prompt:** "Como posso implementar uma opção de tradução no meu site utilizando JavaScript, permitindo que o usuário alterne entre português e inglês sem precisar criar uma página HTML diferente para cada idioma?"
 
-Rejeitei: Deixar a página em apenas um idioma, sem opção de tradução.
+**Resposta:** A IA explicou como utilizar HTML, CSS e JavaScript para criar opções de idioma e alterar dinamicamente os textos da página.
 
-Rejeitei: Deixar as informações aparecendo na tela o tempo todo, sem precisar clicar no botão.
+**Aceitei:** Adicionar as opções de português e inglês no canto superior direito, permitindo que o usuário escolha o idioma.
 
+**Rejeitei:** Manter a página em apenas um idioma, sem opção de tradução.
 
-29/10 – Mariana – ChatGPT
+---
 
-Prompt: "Como posso colocar duas imagens nos cantos superiores da página, mantendo o título centralizado e sem que as imagens acompanhem a rolagem da tela?"
+## 29/10 – Mariana – ChatGPT
 
-Resposta: utilizando position: absolute no CSS para posicionar as imagens nos cantos da página, ajustando top, left e right para definir suas posições.
+**Prompt:** "Como posso posicionar imagens decorativas nos cantos superiores da Pokédex utilizando CSS, sem interferir na centralização do título e sem fazer com que as imagens acompanhem o usuário durante a rolagem da página?"
 
-Aceitei: manter apenas uma imagens no canto esquerdo, sem acompanhar a rolagem da página.
+**Resposta:** A IA sugeriu utilizar position: absolute e ajustar as propriedades top, left e right para controlar o posicionamento das imagens.
 
-Rejeitei: utilizar position: fixed, pois as imagens ficariam acompanhando a tela durante a rolagem.
+**Aceitei:** Manter apenas uma imagem no canto esquerdo, sem acompanhar a rolagem da página.
 
-12/11 – MARIANA – ChatGPT
+**Rejeitei:** Utilizar position: fixed, pois a imagem acompanharia a tela durante a rolagem.
 
-Prompt: "Como posso gerar os cartões dos Pokémon automaticamente sem precisar escrever cada um no HTML?"
+---
 
-Resposta: utilizando um vetor de objetos e uma função renderizar(lista) para criar os cartões automaticamente.
+## 12/11 – Mariana – ChatGPT
 
-Aceitei: utilizar o vetor de objetos e a função de renderização.
+**Prompt:** "Considerando que os dados dos Pokémon estão organizados em um vetor de objetos, como posso reutilizar uma função de renderização para atualizar os cartões exibidos após uma pesquisa, sem precisar duplicar o código HTML?"
 
-Rejeitei: substituir toda a estrutura visual que já estava pronta.
+**Resposta:** A IA sugeriu utilizar uma função renderizar(lista), que recebe os dados e atualiza dinamicamente os cartões apresentados na página.
 
-12/11 – ANDRÉ – ChatGPT
+**Aceitei:** Reutilizar o vetor de objetos e a função de renderização.
 
-Prompt: "Como posso deixar o seletor de idioma e o botão de informações no canto superior direito?"
+**Rejeitei:** Substituir toda a estrutura visual que já estava pronta.
 
-Resposta: organizando os elementos pelo CSS e ajustando suas posições.
+---
 
-Aceitei: posicionar os dois elementos na parte superior direita.
+## 12/11 – André – ChatGPT
 
-Rejeitei: alterar o título e a estrutura principal do site.
+**Prompt:** "Como posso reorganizar o cabeçalho da Pokédex utilizando CSS para posicionar o seletor de idiomas e o botão de informações lado a lado no canto superior direito, mantendo o título centralizado e evitando a sobreposição dos elementos?"
 
-12/11 – ANDRÉ – ChatGPT
+**Resposta:** A IA sugeriu organizar os elementos do cabeçalho pelo CSS, ajustando o posicionamento e o espaçamento entre eles.
 
-Prompt: "Como posso salvar as modificações do site para que continuem aparecendo quando ele for acessado novamente?"
+**Aceitei:** Posicionar os dois elementos lado a lado na parte superior direita.
 
-Resposta: utilizando localStorage para armazenar os Pokémon adicionados, editados e excluídos, mantendo os dados após atualizar ou reabrir a página no mesmo navegador.
+**Rejeitei:** Alterar o título e a estrutura principal do site.
 
-Aceitei: utilizar o localStorage para salvar as alterações realizadas.
+---
 
-Rejeitei: utilizar um banco de dados externo, pois o armazenamento local atende à necessidade atual do projeto.
+## 12/11 – André – ChatGPT
+
+**Prompt:** "Meu projeto possui funcionalidades de cadastro, edição e exclusão de Pokémon. Como posso utilizar o localStorage e os métodos JSON.stringify() e JSON.parse() para manter essas alterações salvas mesmo depois que o usuário atualizar ou fechar a página, sem utilizar um banco de dados externo?"
+
+**Resposta:** A IA sugeriu utilizar o localStorage para armazenar os dados dos Pokémon, convertendo os objetos em texto para salvar e recuperando as informações quando a página for aberta novamente.
+
+**Aceitei:** Utilizar o localStorage para manter as alterações realizadas no mesmo navegador.
+
+**Rejeitei:** Utilizar um banco de dados externo, pois o armazenamento local atende às necessidades atuais do projeto.
