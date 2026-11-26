@@ -110,6 +110,18 @@
 
 **Prompt:** "Meu projeto possui funcionalidades de cadastro, edição e exclusão de Pokémon. Como posso utilizar o localStorage e os métodos JSON.stringify() e JSON.parse() para manter essas alterações salvas mesmo depois que o usuário atualizar ou fechar a página, sem utilizar um banco de dados externo?"
 
+---
+
+23/10 – [Naihara] – ChatGPT
+
+Prompt: "Como posso utilizar o GitHub Pages para publicar a Pokédex gratuitamente e gerar um link que permita acessar o site pelo computador e pelo celular?"
+
+Resposta: A IA explicou como acessar Settings, selecionar Pages, escolher a opção Deploy from a branch e configurar a branch main com a pasta root.
+
+Aceitei: Utilizar o GitHub Pages para publicar o projeto.
+
+Rejeitei: Utilizar uma plataforma de hospedagem paga.
+
 **Resposta:** A IA sugeriu utilizar o localStorage para armazenar os dados dos Pokémon, convertendo os objetos em texto para salvar e recuperando as informações quando a página for aberta novamente.
 
 **Aceitei:** Utilizar o localStorage para manter as alterações realizadas no mesmo navegador.
