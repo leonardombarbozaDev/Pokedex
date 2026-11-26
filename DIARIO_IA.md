@@ -112,7 +112,7 @@
 
 ---
 
-13/11 – Naihara – ChatGPT
+##13/11 – Naihara – ChatGPT
 
 Prompt: "Como posso utilizar o GitHub Pages para publicar a Pokédex gratuitamente e gerar um link que permita acessar o site pelo computador e pelo celular?"
 
